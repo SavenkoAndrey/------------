@@ -21,14 +21,14 @@ function value(){
   minValue = Number(minValue.value);
   maxValue =  Number(maxValue.value);
   if (minValue == ''){
-    alert ('Введите минимальное значение!');
-    guesses.textContent = 'Предыдущие варианты: ';
+    alert ('Enter the minimum value!');
+    guesses.textContent = 'Previous versions: ';
     location.reload();
   }else if (maxValue == '') {
-    alert ('Введите максимальное значение!');
+    alert ('Enter the maximum value!');
     location.reload();
   }else if(minValue > maxValue) { 
-    alert ('Минимальное значение не может быть больше максимального!');
+    alert ('The minimum value cannot be greater than the maximum!');
     location.reload();
   }
   // console.log (minValue +'\n'+ maxValue);
@@ -63,16 +63,16 @@ function startGame() {
   function checkGuess() {
   let userGuess = Number(guessField.value);
   if (guessCount === 1) {
-    guesses.textContent = 'Предыдущие варианты: ';
+    guesses.textContent = 'Previous versions: ';
   }
   guesses.textContent += userGuess + ' ';
  
   if (userGuess === randomNumber) {
     if ((guessCount === 2) || (guessCount === 3) || (guessCount === 4)) {
-    lastResult.textContent = 'Поздравляю! Ты угадал число за ' + guessCount + ' попытки!'; 
+    lastResult.textContent = 'Congratulations! You guessed the number for ' + guessCount + ' attempts!'; 
     }else if (guessCount === 1) {
-        lastResult.textContent = 'Поздравляю! Ты угадал число за ' + guessCount + ' попытку!'; 
-    }else lastResult.textContent = 'Поздравляю! Ты угадал число за ' + guessCount + ' попыток!';  
+        lastResult.textContent = 'Congratulations! You guessed the number for ' + guessCount + ' attempt!'; 
+    }else lastResult.textContent = 'Congratulations! You guessed the number for ' + guessCount + ' attempts!';  
     lastResult.style.color = '#4cbb17'; 
     lowOrHi.textContent = '';
     setGameOver();
@@ -83,16 +83,16 @@ function startGame() {
     }else {
     lastResult.style.color = '#1835FF'; 
     if(userGuess < randomNumber){
-      lowOrHi.textContent = 'Попробуй ввести число больше!';
-      lastResult.textContent = 'Холоднее!';
+      lowOrHi.textContent = 'Try to enter a number larger!';
+      lastResult.textContent = 'Colder!';
       lives.innerHTML -= 1;
     }else if (userGuess > randomNumber) {
-      lowOrHi.textContent = 'Попробуй ввести число меньше!';
+      lowOrHi.textContent = 'Try to enter a number less!';
       lastResult.style.color = '#FF1824'; 
-      lastResult.textContent = 'Теплее!';
+      lastResult.textContent = 'Warmer!';
       lives.innerHTML -= 1;
     }if (userGuess > maxValue || userGuess < minValue){
-      lowOrHi.textContent = 'Вы вышли за придел диапазона!';
+      lowOrHi.textContent = 'You are out of range!';
       setGameOver()
     }
   }
@@ -113,7 +113,7 @@ function startGame() {
   guessField.disabled = true;
   guessSubmit.disabled = true;
   resetButton = document.createElement('button');
-  resetButton.textContent = 'Новая игра';
+  resetButton.textContent = 'New game';
   document.body.appendChild(resetButton);
   resetButton.addEventListener('click', resetGame);
 }
